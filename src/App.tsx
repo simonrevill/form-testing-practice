@@ -1,7 +1,9 @@
+import Form from "./components/Form/Form";
+
 function App() {
   return (
-    <main className="p-4 max-w-[48rem] mx-auto">
-      <h1 className="text-3xl font-bold mb-8">Form Testing Practice</h1>
+    <main className="p-4 md:p-8 min-h-screen">
+      <Form />
     </main>
   );
 }
