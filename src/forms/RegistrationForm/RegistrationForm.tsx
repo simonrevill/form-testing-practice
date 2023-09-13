@@ -1,13 +1,14 @@
-import Label from '../../components/Label';
+import Label from "../../components/Label";
+import TextInput from "../../components/TextInput";
 
 const RegistrationForm = () => {
   return (
     <form>
       <Label htmlFor="firstName">First name</Label>
-      <input type="text" name="firstName" id="firstName" />
+      <TextInput name="firstName" />
 
       <Label htmlFor="lastName">Last name</Label>
-      <input type="text" name="lastName" id="lastName" />
+      <TextInput name="lastName" />
 
       <Label htmlFor="age">Age</Label>
       <input type="number" name="age" id="age" />
