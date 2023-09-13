@@ -57,7 +57,7 @@ describe("registration form tests", () => {
       expect(confirmPassword).toHaveValue("");
     });
 
-    it("renders the subscribe to newsletter field correctly", () => {
+    it("renders the default checked subscribe to newsletter checkbox field correctly", () => {
       render(<Form />);
 
       const subscribeToNewsletter = screen.getByLabelText(
