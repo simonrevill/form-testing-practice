@@ -3,7 +3,7 @@ import Form from "./RegistrationForm";
 
 describe("registration form tests", () => {
   describe("initial layout tests", () => {
-    it("renders the first name field correctly", () => {
+    it("renders the first name field", () => {
       render(<Form />);
 
       const firstName = screen.getByLabelText("First name");
@@ -12,7 +12,7 @@ describe("registration form tests", () => {
       expect(firstName).toHaveValue("");
     });
 
-    it("renders the last name field correctly", () => {
+    it("renders the last name field", () => {
       render(<Form />);
 
       const lastName = screen.getByLabelText("Last name");
@@ -21,7 +21,7 @@ describe("registration form tests", () => {
       expect(lastName).toHaveValue("");
     });
 
-    it("renders the age field correctly", () => {
+    it("renders the age field", () => {
       render(<Form />);
 
       const age = screen.getByLabelText("Age");
@@ -30,7 +30,7 @@ describe("registration form tests", () => {
       expect(age).toHaveValue(null);
     });
 
-    it("renders the email field correctly", () => {
+    it("renders the email field", () => {
       render(<Form />);
 
       const email = screen.getByLabelText("Email");
@@ -39,7 +39,7 @@ describe("registration form tests", () => {
       expect(email).toHaveValue("");
     });
 
-    it("renders the password field correctly", () => {
+    it("renders the password field", () => {
       render(<Form />);
 
       const password = screen.getByLabelText("Password");
@@ -48,7 +48,7 @@ describe("registration form tests", () => {
       expect(password).toHaveValue("");
     });
 
-    it("renders the confirm password field correctly", () => {
+    it("renders the confirm password field", () => {
       render(<Form />);
 
       const confirmPassword = screen.getByLabelText("Confirm password");
@@ -57,7 +57,7 @@ describe("registration form tests", () => {
       expect(confirmPassword).toHaveValue("");
     });
 
-    it("renders the default checked subscribe to newsletter checkbox field correctly", () => {
+    it("renders the default checked subscribe to newsletter checkbox field", () => {
       render(<Form />);
 
       const subscribeToNewsletter = screen.getByLabelText(
@@ -68,7 +68,7 @@ describe("registration form tests", () => {
       expect(subscribeToNewsletter).toBeChecked();
     });
 
-    it("renders an initially disabled submit button correctly", () => {
+    it("renders an initially disabled submit button", () => {
       render(<Form />);
 
       const submit = screen.getByText("Submit");
