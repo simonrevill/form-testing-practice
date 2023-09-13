@@ -1,6 +1,6 @@
-import { ComponentProps } from 'react';
+import { ComponentProps } from "react";
 
-type LabelProps = ComponentProps<'label'>;
+type LabelProps = ComponentProps<"label">;
 
 const Label = ({ children, ...rest }: LabelProps) => (
   <label className="block" {...rest}>
