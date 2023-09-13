@@ -1,25 +1,27 @@
+import Label from '../../components/Label';
+
 const RegistrationForm = () => {
   return (
     <form>
-      <label htmlFor="firstName">First name</label>
+      <Label htmlFor="firstName">First name</Label>
       <input type="text" name="firstName" id="firstName" />
 
-      <label htmlFor="lastName">Last name</label>
+      <Label htmlFor="lastName">Last name</Label>
       <input type="text" name="lastName" id="lastName" />
 
-      <label htmlFor="age">Age</label>
+      <Label htmlFor="age">Age</Label>
       <input type="number" name="age" id="age" />
 
-      <label htmlFor="email">Email</label>
+      <Label htmlFor="email">Email</Label>
       <input type="email" name="email" id="email" />
 
-      <label htmlFor="password">Password</label>
+      <Label htmlFor="password">Password</Label>
       <input type="password" name="password" id="password" />
 
-      <label htmlFor="confirmPassword">Confirm password</label>
+      <Label htmlFor="confirmPassword">Confirm password</Label>
       <input type="password" name="confirmPassword" id="confirmPassword" />
 
-      <label htmlFor="subscribeToNewsletter">Subscribe to newsletter</label>
+      <Label htmlFor="subscribeToNewsletter">Subscribe to newsletter</Label>
       <input
         type="checkbox"
         name="confirmPassword"
