@@ -1,3 +1,4 @@
+import Button from "../../components/Button";
 import CheckboxInput from "../../components/CheckboxInput";
 import EmailInput from "../../components/EmailInput";
 import Label from "../../components/Label";
@@ -29,9 +30,9 @@ const RegistrationForm = () => {
       <Label htmlFor="subscribeToNewsletter">Subscribe to newsletter</Label>
       <CheckboxInput name="subscribeToNewsletter" defaultChecked />
 
-      <button type="submit" disabled>
+      <Button type="submit" fullWidth disabled>
         Submit
-      </button>
+      </Button>
     </form>
   );
 };
