@@ -1,6 +1,7 @@
 import EmailInput from "../../components/EmailInput";
 import Label from "../../components/Label";
 import NumberInput from "../../components/NumberInput";
+import PasswordInput from "../../components/PasswordInput";
 import TextInput from "../../components/TextInput";
 
 const RegistrationForm = () => {
@@ -19,10 +20,10 @@ const RegistrationForm = () => {
       <EmailInput name="email" />
 
       <Label htmlFor="password">Password</Label>
-      <input type="password" name="password" id="password" />
+      <PasswordInput name="password" />
 
       <Label htmlFor="confirmPassword">Confirm password</Label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
+      <PasswordInput name="confirmPassword" />
 
       <Label htmlFor="subscribeToNewsletter">Subscribe to newsletter</Label>
       <input
