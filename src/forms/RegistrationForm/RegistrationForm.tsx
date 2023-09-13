@@ -1,4 +1,5 @@
 import Label from "../../components/Label";
+import NumberInput from "../../components/NumberInput";
 import TextInput from "../../components/TextInput";
 
 const RegistrationForm = () => {
@@ -11,7 +12,7 @@ const RegistrationForm = () => {
       <TextInput name="lastName" />
 
       <Label htmlFor="age">Age</Label>
-      <input type="number" name="age" id="age" />
+      <NumberInput name="age" />
 
       <Label htmlFor="email">Email</Label>
       <input type="email" name="email" id="email" />
