@@ -5,7 +5,7 @@ type TextInputProps = {
 } & ComponentProps<"input">;
 
 const TextInput = ({ name, ...rest }: TextInputProps) => (
-  <input type="text" name={name} id={name} {...rest} />
+  <input type="text" name={name} id={name} className="block w-full" {...rest} />
 );
 
 export default TextInput;
