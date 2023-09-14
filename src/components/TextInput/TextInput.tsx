@@ -5,8 +5,14 @@ type TextInputProps = {
 } & ComponentProps<"input">;
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ id, ...rest }, ref) => (
-    <input type="text" id={id} className="block w-full" ref={ref} {...rest} />
+  ({ id, ...rest }, forwardedRef) => (
+    <input
+      type="text"
+      id={id}
+      className="block w-full"
+      ref={forwardedRef}
+      {...rest}
+    />
   ),
 );
 

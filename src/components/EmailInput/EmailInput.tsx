@@ -1,17 +1,19 @@
-import { ComponentProps } from "react";
+import { ComponentProps, forwardRef } from "react";
 
 type EmailInputProps = {
-  name: string;
+  id: string;
 } & ComponentProps<"input">;
 
-const EmailInput = ({ name, ...rest }: EmailInputProps) => (
-  <input
-    type="email"
-    name={name}
-    id={name}
-    className="block w-full"
-    {...rest}
-  />
+const EmailInput = forwardRef<HTMLInputElement, EmailInputProps>(
+  ({ id, ...rest }, forwardedRef) => (
+    <input
+      type="email"
+      id={id}
+      className="block w-full"
+      ref={forwardedRef}
+      {...rest}
+    />
+  ),
 );
 
 export default EmailInput;

@@ -1,17 +1,13 @@
-import { ComponentProps } from "react";
+import { ComponentProps, forwardRef } from "react";
 
 type PasswordInputProps = {
-  name: string;
+  id: string;
 } & ComponentProps<"input">;
 
-const PasswordInput = ({ name, ...rest }: PasswordInputProps) => (
-  <input
-    type="password"
-    name={name}
-    id={name}
-    className="block w-full"
-    {...rest}
-  />
+const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
+  ({ id, ...rest }) => (
+    <input type="password" id={id} className="block w-full" {...rest} />
+  ),
 );
 
 export default PasswordInput;

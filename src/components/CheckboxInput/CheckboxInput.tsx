@@ -1,11 +1,13 @@
-import { ComponentProps } from "react";
+import { ComponentProps, forwardRef } from "react";
 
 type CheckboxInputProps = {
-  name: string;
+  id: string;
 } & ComponentProps<"input">;
 
-const CheckboxInput = ({ name, ...rest }: CheckboxInputProps) => (
-  <input type="checkbox" name={name} id={name} {...rest} />
+const CheckboxInput = forwardRef<HTMLInputElement, CheckboxInputProps>(
+  ({ id, ...rest }, forwardedRef) => (
+    <input type="checkbox" id={id} ref={forwardedRef} {...rest} />
+  ),
 );
 
 export default CheckboxInput;

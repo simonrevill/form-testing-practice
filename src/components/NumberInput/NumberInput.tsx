@@ -1,17 +1,19 @@
-import { ComponentProps } from "react";
+import { ComponentProps, forwardRef } from "react";
 
 type NumberInputProps = {
-  name: string;
+  id: string;
 } & ComponentProps<"input">;
 
-const NumberInput = ({ name, ...rest }: NumberInputProps) => (
-  <input
-    type="number"
-    name={name}
-    id={name}
-    className="block w-full"
-    {...rest}
-  />
+const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
+  ({ id, ...rest }, forwardedRef) => (
+    <input
+      type="number"
+      id={id}
+      className="block w-full"
+      ref={forwardedRef}
+      {...rest}
+    />
+  ),
 );
 
 export default NumberInput;
