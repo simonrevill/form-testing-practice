@@ -5,8 +5,14 @@ type PasswordInputProps = {
 } & ComponentProps<"input">;
 
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ id, ...rest }) => (
-    <input type="password" id={id} className="block w-full" {...rest} />
+  ({ id, ...rest }, forwardedRef) => (
+    <input
+      type="password"
+      id={id}
+      className="block w-full"
+      ref={forwardedRef}
+      {...rest}
+    />
   ),
 );
 
