@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { renderWithUserEvent } from "../../utils/testUtils";
 import Form from "./RegistrationForm";
 
 describe("registration form tests", () => {
@@ -61,7 +62,7 @@ describe("registration form tests", () => {
       render(<Form />);
 
       const subscribeToNewsletter = screen.getByLabelText(
-        "Subscribe to newsletter"
+        "Subscribe to newsletter",
       );
 
       expect(subscribeToNewsletter).toBeVisible();
@@ -71,10 +72,21 @@ describe("registration form tests", () => {
     it("renders an initially disabled submit button", () => {
       render(<Form />);
 
-      const submit = screen.getByText("Submit");
+      const submit = screen.getByRole("button", { name: "Submit" });
 
       expect(submit).toBeVisible();
       expect(submit).toBeDisabled();
     });
   });
+
+  // describe("form interaction tests", () => {
+  //   it("shows an error message when first name is less than 2 characters in length", async () => {
+  //     const { user } = renderWithUserEvent(<Form />);
+
+  //     const firstName = screen.getByLabelText("First name");
+  //     await user.type(firstName, "test string");
+
+  //     expect(screen.getByText('')).toHaveValue("test string");
+  //   });
+  // });
 });
