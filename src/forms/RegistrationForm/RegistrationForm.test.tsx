@@ -79,14 +79,77 @@ describe("registration form tests", () => {
     });
   });
 
-  // describe("form interaction tests", () => {
-  //   it("shows an error message when first name is less than 2 characters in length", async () => {
-  //     const { user } = renderWithUserEvent(<Form />);
+  describe("form interaction tests", () => {
+    it("shows validation error message when first name is not entered", async () => {
+      const { user } = renderWithUserEvent(<Form />);
 
-  //     const firstName = screen.getByLabelText("First name");
-  //     await user.type(firstName, "test string");
+      const firstName = screen.getByLabelText("First name");
+      await user.type(firstName, "{Tab}");
 
-  //     expect(screen.getByText('')).toHaveValue("test string");
-  //   });
-  // });
+      expect(firstName).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("First name is required.")).toBeVisible();
+    });
+
+    it("shows validation error message when first name is less than 2 characters in length", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const firstName = screen.getByLabelText("First name");
+      await user.type(firstName, "J");
+
+      expect(firstName).toHaveAttribute("aria-invalid", "true");
+      expect(
+        screen.getByText("First name must be at least 2 characters in length."),
+      ).toBeVisible();
+    });
+
+    it("shows validation error message when first name is more than 30 characters in length", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const firstName = screen.getByLabelText("First name");
+      await user.type(firstName, "abcd efgh ijkl mnop qrst uvwxyz");
+
+      expect(firstName).toHaveAttribute("aria-invalid", "true");
+      expect(
+        screen.getByText(
+          "First name must no longer than 30 characters in length.",
+        ),
+      ).toBeVisible();
+    });
+
+    it("shows validation error message when last name is not entered", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const lastName = screen.getByLabelText("Last name");
+      await user.type(lastName, "{Tab}");
+
+      expect(lastName).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("Last name is required.")).toBeVisible();
+    });
+
+    it("shows validation error message when last name is less than 2 characters in length", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const lastName = screen.getByLabelText("Last name");
+      await user.type(lastName, "J");
+
+      expect(lastName).toHaveAttribute("aria-invalid", "true");
+      expect(
+        screen.getByText("Last name must be at least 2 characters in length."),
+      ).toBeVisible();
+    });
+
+    it("shows validation error message when last name is more than 30 characters in length", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const lastName = screen.getByLabelText("Last name");
+      await user.type(lastName, "abcd efgh ijkl mnop qrst uvwxyz");
+
+      expect(lastName).toHaveAttribute("aria-invalid", "true");
+      expect(
+        screen.getByText(
+          "Last name must no longer than 30 characters in length.",
+        ),
+      ).toBeVisible();
+    });
+  });
 });
