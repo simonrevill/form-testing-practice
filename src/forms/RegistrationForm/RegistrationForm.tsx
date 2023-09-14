@@ -5,8 +5,10 @@ import Label from "../../components/Label";
 import NumberInput from "../../components/NumberInput";
 import PasswordInput from "../../components/PasswordInput";
 import TextInput from "../../components/TextInput";
+import ErrorMessage from "../../components/ErrorMessage";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ErrorMessage as Error } from "@hookform/error-message";
 import { z } from "zod";
 
 const validationSchema = z.object({
@@ -50,7 +52,7 @@ const RegistrationForm = () => {
         {...register("firstName")}
         aria-invalid={errors.firstName ? "true" : "false"}
       />
-      {errors?.firstName?.message && <p>{errors.firstName.message}</p>}
+      <Error errors={errors} name="firstName" as={ErrorMessage} />
 
       <Label htmlFor="lastName">Last name</Label>
       <TextInput
@@ -58,7 +60,7 @@ const RegistrationForm = () => {
         {...register("lastName")}
         aria-invalid={errors.lastName ? "true" : "false"}
       />
-      {errors?.lastName?.message && <p>{errors.lastName.message}</p>}
+      <Error errors={errors} name="lastName" as={ErrorMessage} />
 
       <Label htmlFor="age">Age</Label>
       <NumberInput id="age" />
