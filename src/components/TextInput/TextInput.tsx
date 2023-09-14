@@ -1,11 +1,13 @@
-import { ComponentProps } from "react";
+import { ComponentProps, forwardRef } from "react";
 
 type TextInputProps = {
-  name: string;
+  id: string;
 } & ComponentProps<"input">;
 
-const TextInput = ({ name, ...rest }: TextInputProps) => (
-  <input type="text" name={name} id={name} className="block w-full" {...rest} />
+const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ id, ...rest }, ref) => (
+    <input type="text" id={id} className="block w-full" ref={ref} {...rest} />
+  ),
 );
 
 export default TextInput;
