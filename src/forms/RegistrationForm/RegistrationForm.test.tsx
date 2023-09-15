@@ -239,5 +239,44 @@ describe("registration form tests", () => {
         screen.getByText("Password must be a maximum of 15 characters."),
       ).toBeVisible();
     });
+
+    it("shows validation error message when confirm password is not entered", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const confirmPassword = screen.getByLabelText("Confirm password");
+      await user.type(confirmPassword, "{Tab}");
+
+      expect(confirmPassword).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("Confirm password is required.")).toBeVisible();
+    });
+
+    it("shows validation error message when confirm password does not match password", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      // Fill out the rest of the form
+      // Zod refine validation will not run if the other validations are
+      // not successful:
+
+      const firstName = screen.getByLabelText("First name");
+      await user.type(firstName, "Joe");
+
+      const lastName = screen.getByLabelText("Last name");
+      await user.type(lastName, "Bloggs");
+
+      const age = screen.getByLabelText("Age");
+      await user.type(age, "24");
+
+      const email = screen.getByLabelText("Email");
+      await user.type(email, "joe@joebloggs.com");
+
+      const password = screen.getByLabelText("Password");
+      await user.type(password, "joebloggs69");
+
+      const confirmPassword = screen.getByLabelText("Confirm password");
+      await user.type(confirmPassword, "joebloggs69X");
+
+      expect(confirmPassword).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("Passwords do not match.")).toBeVisible();
+    });
   });
 });
