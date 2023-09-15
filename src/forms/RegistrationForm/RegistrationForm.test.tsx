@@ -279,4 +279,16 @@ describe("registration form tests", () => {
       expect(screen.getByText("Passwords do not match.")).toBeVisible();
     });
   });
+  describe("form interaction tests", () => {
+    it("unchecks the subscribe to newsletter checkbox when clicked", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const subscribeToNewsletter = screen.getByLabelText(
+        "Subscribe to newsletter",
+      );
+      await user.click(subscribeToNewsletter);
+
+      expect(subscribeToNewsletter).not.toBeChecked();
+    });
+  });
 });

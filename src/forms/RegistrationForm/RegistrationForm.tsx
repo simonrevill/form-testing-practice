@@ -42,6 +42,7 @@ const validationSchema = z
       .min(6, "Password must be a minimum of 6 characters.")
       .max(15, "Password must be a maximum of 15 characters."),
     confirmPassword: z.string().nonempty("Confirm password is required."),
+    subscribeToNewsletter: z.boolean().optional(),
   })
   .refine((values) => values.password === values.confirmPassword, {
     message: "Passwords do not match.",
@@ -122,7 +123,11 @@ const RegistrationForm = () => {
       </FormControl>
 
       <FormControl row>
-        <CheckboxInput id="subscribeToNewsletter" defaultChecked />
+        <CheckboxInput
+          id="subscribeToNewsletter"
+          {...register("subscribeToNewsletter")}
+          defaultChecked
+        />
         <Label htmlFor="subscribeToNewsletter">Subscribe to newsletter</Label>
       </FormControl>
 
