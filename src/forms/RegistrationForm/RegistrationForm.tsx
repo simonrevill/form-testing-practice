@@ -1,16 +1,17 @@
-import Button from "../../components/Button";
-import CheckboxInput from "../../components/CheckboxInput";
-import EmailInput from "../../components/EmailInput";
-import Label from "../../components/Label";
-import NumberInput from "../../components/NumberInput";
-import PasswordInput from "../../components/PasswordInput";
-import TextInput from "../../components/TextInput";
-import ErrorMessage from "../../components/ErrorMessage";
+import Form from "../../components/Form";
 import FormControl from "../../components/FormControl";
+import Label from "../../components/Label";
+import TextInput from "../../components/TextInput";
+import NumberInput from "../../components/NumberInput";
+import EmailInput from "../../components/EmailInput";
+import PasswordInput from "../../components/PasswordInput";
+import CheckboxInput from "../../components/CheckboxInput";
+import ErrorMessage from "../../components/ErrorMessage";
+import Button from "../../components/Button";
+import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage as Error } from "@hookform/error-message";
-import { z } from "zod";
 import { setValueAsNumber } from "../../utils/formUtils";
 
 const validationSchema = z
@@ -62,7 +63,7 @@ const RegistrationForm = () => {
   const submit = (values: FormValues) => console.log(values);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-4">
+    <Form onSubmit={handleSubmit(submit)}>
       <FormControl>
         <Label htmlFor="firstName">First name</Label>
         <TextInput
@@ -128,7 +129,7 @@ const RegistrationForm = () => {
       <Button type="submit" fullWidth disabled={!isValid}>
         Submit
       </Button>
-    </form>
+    </Form>
   );
 };
 
