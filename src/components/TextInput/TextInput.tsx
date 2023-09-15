@@ -9,7 +9,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     <input
       type="text"
       id={id}
-      className="block w-full"
+      className="block w-full rounded"
       ref={forwardedRef}
       {...rest}
     />

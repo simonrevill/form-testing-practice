@@ -9,7 +9,7 @@ const EmailInput = forwardRef<HTMLInputElement, EmailInputProps>(
     <input
       type="email"
       id={id}
-      className="block w-full"
+      className="block w-full rounded"
       ref={forwardedRef}
       {...rest}
     />

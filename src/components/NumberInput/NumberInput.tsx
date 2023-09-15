@@ -9,7 +9,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
     <input
       type="number"
       id={id}
-      className="block w-full"
+      className="block w-full rounded"
       ref={forwardedRef}
       {...rest}
     />
