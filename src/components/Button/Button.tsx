@@ -13,7 +13,9 @@ const Button = ({
 }: ButtonProps) => (
   <button
     type={type}
-    className={`block cursor-pointer ${fullWidth ? "w-full" : ""}`}
+    className={`block cursor-pointer ${
+      fullWidth ? "w-full" : ""
+    } rounded bg-blue-600 py-2 text-white hover:bg-blue-700 active:bg-blue-800`}
     {...rest}
   >
     {children}
