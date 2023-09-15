@@ -185,5 +185,25 @@ describe("registration form tests", () => {
         screen.getByText("Age must not be a negative number."),
       ).toBeVisible();
     });
+
+    it("shows validation error message when email is not entered", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const age = screen.getByLabelText("Email");
+      await user.type(age, "{Tab}");
+
+      expect(age).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("Email address is required.")).toBeVisible();
+    });
+
+    it("shows validation error message when email is entered with incorrect format", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const age = screen.getByLabelText("Email");
+      await user.type(age, "x@x");
+
+      expect(age).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("Email address is invalid.")).toBeVisible();
+    });
   });
 });

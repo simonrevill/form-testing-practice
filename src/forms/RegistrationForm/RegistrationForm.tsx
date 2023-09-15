@@ -29,6 +29,10 @@ const validationSchema = z.object({
     })
     .int("Age must be a whole number and not decimal.")
     .nonnegative("Age must not be a negative number."),
+  email: z
+    .string()
+    .nonempty("Email address is required.")
+    .email("Email address is invalid."),
 });
 
 type FormValues = z.infer<typeof validationSchema>;
@@ -74,7 +78,12 @@ const RegistrationForm = () => {
       <Error errors={errors} name="age" as={ErrorMessage} />
 
       <Label htmlFor="email">Email</Label>
-      <EmailInput id="email" />
+      <EmailInput
+        id="email"
+        {...register("email")}
+        aria-invalid={errors.email ? "true" : "false"}
+      />
+      <Error errors={errors} name="email" as={ErrorMessage} />
 
       <Label htmlFor="password">Password</Label>
       <PasswordInput id="password" />
