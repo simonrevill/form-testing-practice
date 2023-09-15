@@ -33,6 +33,11 @@ const validationSchema = z.object({
     .string()
     .nonempty("Email address is required.")
     .email("Email address is invalid."),
+  password: z
+    .string()
+    .nonempty("Password is required.")
+    .min(6, "Password must be a minimum of 6 characters.")
+    .max(15, "Password must be a maximum of 15 characters."),
 });
 
 type FormValues = z.infer<typeof validationSchema>;
@@ -86,7 +91,12 @@ const RegistrationForm = () => {
       <Error errors={errors} name="email" as={ErrorMessage} />
 
       <Label htmlFor="password">Password</Label>
-      <PasswordInput id="password" />
+      <PasswordInput
+        id="password"
+        {...register("password")}
+        aria-invalid={errors.password ? "true" : "false"}
+      />
+      <Error errors={errors} name="password" as={ErrorMessage} />
 
       <Label htmlFor="confirmPassword">Confirm password</Label>
       <PasswordInput id="confirmPassword" />

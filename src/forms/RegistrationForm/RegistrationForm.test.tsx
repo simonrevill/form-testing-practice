@@ -79,7 +79,7 @@ describe("registration form tests", () => {
     });
   });
 
-  describe("form interaction tests", () => {
+  describe("form validation tests", () => {
     it("shows validation error message when first name is not entered", async () => {
       const { user } = renderWithUserEvent(<Form />);
 
@@ -204,6 +204,40 @@ describe("registration form tests", () => {
 
       expect(email).toHaveAttribute("aria-invalid", "true");
       expect(screen.getByText("Email address is invalid.")).toBeVisible();
+    });
+
+    it("shows validation error message when password is not entered", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const password = screen.getByLabelText("Password");
+      await user.type(password, "{Tab}");
+
+      expect(password).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("Password is required.")).toBeVisible();
+    });
+
+    it("shows validation error message when password is less than 6 characters", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const password = screen.getByLabelText("Password");
+      await user.type(password, "abcde");
+
+      expect(password).toHaveAttribute("aria-invalid", "true");
+      expect(
+        screen.getByText("Password must be a minimum of 6 characters."),
+      ).toBeVisible();
+    });
+
+    it("shows validation error message when password is more than 15 characters", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const password = screen.getByLabelText("Password");
+      await user.type(password, "abcdefghijklmnop");
+
+      expect(password).toHaveAttribute("aria-invalid", "true");
+      expect(
+        screen.getByText("Password must be a maximum of 15 characters."),
+      ).toBeVisible();
     });
   });
 });
