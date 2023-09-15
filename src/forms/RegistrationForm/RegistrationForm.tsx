@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage as Error } from "@hookform/error-message";
 import { z } from "zod";
+import { setValueAsNumber } from "../../utils/formUtils";
 
 const validationSchema = z.object({
   firstName: z
@@ -24,10 +25,10 @@ const validationSchema = z.object({
     .max(30, "Last name must no longer than 30 characters in length."),
   age: z
     .number({
-      required_error: "Age is required",
+      required_error: "Age is required.",
     })
-    .int("Age must be an integer")
-    .nonnegative("Age must not be a negative number"),
+    .int("Age must be a whole number and not decimal.")
+    .nonnegative("Age must not be a negative number."),
 });
 
 type FormValues = z.infer<typeof validationSchema>;
@@ -63,7 +64,14 @@ const RegistrationForm = () => {
       <Error errors={errors} name="lastName" as={ErrorMessage} />
 
       <Label htmlFor="age">Age</Label>
-      <NumberInput id="age" />
+      <NumberInput
+        id="age"
+        {...register("age", {
+          setValueAs: setValueAsNumber,
+        })}
+        aria-invalid={errors.age ? "true" : "false"}
+      />
+      <Error errors={errors} name="age" as={ErrorMessage} />
 
       <Label htmlFor="email">Email</Label>
       <EmailInput id="email" />

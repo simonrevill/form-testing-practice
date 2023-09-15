@@ -151,5 +151,39 @@ describe("registration form tests", () => {
         ),
       ).toBeVisible();
     });
+
+    it("shows validation error message when age is not entered", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const age = screen.getByLabelText("Age");
+      await user.type(age, "{Tab}");
+
+      expect(age).toHaveAttribute("aria-invalid", "true");
+      expect(screen.getByText("Age is required.")).toBeVisible();
+    });
+
+    it("shows validation error message when age is entered as a decimal", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const age = screen.getByLabelText("Age");
+      await user.type(age, "23.5");
+
+      expect(age).toHaveAttribute("aria-invalid", "true");
+      expect(
+        screen.getByText("Age must be a whole number and not decimal."),
+      ).toBeVisible();
+    });
+
+    it("shows validation error message when age is entered as a negative number", async () => {
+      const { user } = renderWithUserEvent(<Form />);
+
+      const age = screen.getByLabelText("Age");
+      await user.type(age, "-1");
+
+      expect(age).toHaveAttribute("aria-invalid", "true");
+      expect(
+        screen.getByText("Age must not be a negative number."),
+      ).toBeVisible();
+    });
   });
 });
