@@ -1,16 +1,16 @@
-import Form from "../../components/Form";
-import FormControl from "../../components/FormControl";
-import Label from "../../components/Label";
-import TextInput from "../../components/TextInput";
-import NumberInput from "../../components/NumberInput";
-import EmailInput from "../../components/EmailInput";
-import PasswordInput from "../../components/PasswordInput";
-import CheckboxInput from "../../components/CheckboxInput";
-import ErrorMessage from "../../components/ErrorMessage";
-import Button from "../../components/Button";
+import Form from "@components/Form";
+import FormControl from "@components/FormControl";
+import Label from "@components/Label";
+import TextInput from "@components/TextInput";
+import NumberInput from "@components/NumberInput";
+import EmailInput from "@components/EmailInput";
+import PasswordInput from "@components/PasswordInput";
+import CheckboxInput from "@components/CheckboxInput";
+import ErrorMessage from "@components/ErrorMessage";
+import Button from "@components/Button";
 import { ErrorMessage as Error } from "@hookform/error-message";
-import { setValueAsNumber } from "../../utils/formUtils";
-import useRegistrationForm from "../../hooks";
+import { setValueAsNumber } from "@utils/formUtils";
+import useRegistrationForm from "@hooks/index";
 
 const RegistrationForm = () => {
   const { register, handleSubmit, errors, isValid, submit } =
