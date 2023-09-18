@@ -10,7 +10,7 @@ import ErrorMessage from "@components/ErrorMessage";
 import Button from "@components/Button";
 import { ErrorMessage as Error } from "@hookform/error-message";
 import { setValueAsNumber } from "@utils/formUtils";
-import useRegistrationForm from "@hooks/index";
+import useRegistrationForm from "./useRegistrationForm";
 
 const RegistrationForm = () => {
   const { register, handleSubmit, errors, isValid, submit } =

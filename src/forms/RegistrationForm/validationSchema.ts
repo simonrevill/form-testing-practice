@@ -1,8 +1,6 @@
 import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 
-const validationSchema = z
+export const validationSchema = z
   .object({
     firstName: z
       .string()
@@ -37,27 +35,4 @@ const validationSchema = z
     path: ["confirmPassword"],
   });
 
-type FormValues = z.infer<typeof validationSchema>;
-
-const useRegistrationForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm<FormValues>({
-    mode: "all",
-    resolver: zodResolver(validationSchema),
-  });
-
-  const submit = (values: FormValues) => console.log(values);
-
-  return {
-    register,
-    handleSubmit,
-    errors,
-    isValid,
-    submit,
-  };
-};
-
-export default useRegistrationForm;
+export type FormValues = z.infer<typeof validationSchema>;
