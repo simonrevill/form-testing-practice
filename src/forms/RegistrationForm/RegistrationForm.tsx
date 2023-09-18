@@ -27,6 +27,7 @@ const RegistrationForm = () => {
         />
         <Error errors={errors} name="firstName" as={ErrorMessage} />
       </FormControl>
+
       <FormControl>
         <Label htmlFor="lastName">Last name</Label>
         <TextInput
@@ -36,6 +37,7 @@ const RegistrationForm = () => {
         />
         <Error errors={errors} name="lastName" as={ErrorMessage} />
       </FormControl>
+
       <FormControl>
         <Label htmlFor="age">Age</Label>
         <NumberInput
@@ -47,6 +49,7 @@ const RegistrationForm = () => {
         />
         <Error errors={errors} name="age" as={ErrorMessage} />
       </FormControl>
+
       <FormControl>
         <Label htmlFor="email">Email</Label>
         <EmailInput
@@ -56,6 +59,7 @@ const RegistrationForm = () => {
         />
         <Error errors={errors} name="email" as={ErrorMessage} />
       </FormControl>
+
       <FormControl>
         <Label htmlFor="password">Password</Label>
         <PasswordInput
@@ -65,6 +69,7 @@ const RegistrationForm = () => {
         />
         <Error errors={errors} name="password" as={ErrorMessage} />
       </FormControl>
+
       <FormControl>
         <Label htmlFor="confirmPassword">Confirm password</Label>
         <PasswordInput
